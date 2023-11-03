@@ -13,6 +13,18 @@ public_users.post("/register", (req,res) => {
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
   //Write your code here
+  const axios = require('axios');
+
+public_users.get('/', function (req, res) {
+  axios.get('http://your-api-endpoint/books')
+    .then((response) => {
+      res.json(response.data);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: 'An error occurred while fetching book data.' });
+    });
+});
+
   return res.status(300).json({message: "Yet to be implemented"});
 });
 
